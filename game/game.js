@@ -32,10 +32,11 @@ let debugGraphics;
 let debugEnabled = false;
 let debugText;
 let debugKey;
+let gamestarted = true
 let leaderboardOpen = false
 let leaderboardMode = "1pp";
 let isAdmin = false;
-gameFinished = false;
+let gameFinished = false;
 let adminButtonCreated = false;
 var map;
 let dbReady = false;
