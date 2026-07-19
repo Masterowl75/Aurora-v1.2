@@ -399,6 +399,7 @@ function create() {
 
         // Let physics continue
         player.body.allowGravity = true;
+		player.setVelocityX(0)
 
 
 
