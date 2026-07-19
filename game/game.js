@@ -528,7 +528,6 @@ function create() {
         this.summaryText.setVisible(true);
         this.timerText.setVisible(false);
             });
-    }, null, this);
 
 
     debugText = this.add.text(8, 8, "", {
