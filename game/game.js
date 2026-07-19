@@ -204,35 +204,6 @@ function create() {
             );
 
         });
-
-        const leaderboardButton = this.add.text(500, 400, 'LEADERBOARD', {
-                fontFamily: 'Silkscreen',
-                fontSize: '32px',
-                color: '#ffffff',
-                backgroundColor: '#302f30',
-                padding: {
-                    x: 20,
-                    y: 10
-                }
-            })
-            .setOrigin(0.5)
-            .setDepth(9999)
-            .setInteractive({
-                useHandCursor: true
-            });
-
-        leaderboardButton.on('pointerover', () => {
-            leaderboardButton.setScale(1.05);
-        });
-
-        leaderboardButton.on('pointerout', () => {
-            leaderboardButton.setScale(1);
-        });
-
-        leaderboardButton.on('pointerdown', () => {
-            openMenuLeaderboard();
-        });
-        return;
     }
 
     // localStorage.setItem('admin', 'yessir'); 
@@ -556,10 +527,7 @@ function create() {
 
         this.summaryText.setVisible(true);
         this.timerText.setVisible(false);
-                };
             });
-        })
-
     }, null, this);
 
 
