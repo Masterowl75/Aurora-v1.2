@@ -32,7 +32,7 @@ let debugGraphics;
 let debugEnabled = false;
 let debugText;
 let debugKey;
-let gamestarted = true
+let gameStarted = true
 let leaderboardOpen = false
 let leaderboardMode = "1pp";
 let isAdmin = false;
