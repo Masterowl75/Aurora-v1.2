@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Aurora</title>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+        <script src="//cdn.jsdelivr.net/npm/phaser@4.1.0/dist/phaser.min.js"></script>
+        <script src="game/game.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id="GAME">
+            <!-- makes a div that things can be placed in -->
+        </div>
+        <!-- <button id=LPU onclick="openleaderboard()"><b>⬇LEADERBOARD⬇</b></button> -->
+        <!-- <div id="leaderboard"></div> -->
+        <a id="PN" onclick="openPatchNotes()">Veiw version 1.2 patch notes here!</a>
+        <a id="fLL" href="https://webucate.com.au/publish/lwrVKTQJBbNnSPbEjFrG/?1782185014800" target="_self">View Full Leaderboard Here!</a>
+        <div id="patchNotesModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closePatchNotes()">&times;</span>
+
+                <h1>Aurora v1.2 Patch Notes!</h1>
+
+                <h2>New Features</h2>
+                <ul>
+                    <li>All New Map!</li>
+                    <li>All New Art!</li>
+                    <li>All New Main Menu!</li>
+                    <li>Platforms That You Can Jump Through</li>
+                    
+                </ul>
+
+                <h2>Changes</h2>
+                <ul>
+                    <li>Improved game performance</li>
+                    <li>Updated UI styling</li>
+                    <li>Made Leaderboard More Cohesive With The Game</li>
+                </ul>
+
+                <h2>Bug Fixes</h2>
+                <ul>
+                    <li>Fixed Spike Hitboxes</li>
+                </ul>
+
+                <h1> New Mechanic! </h1>
+                <ul>
+                    <li> Presenting the all new mechanic, Wavedashing!</li>
+                    <li> With Wavedasing you can gain massive amounts of speed</li>
+                    <li> To perform a Wavedash you must dash across the floor, and then jump mid dash to go ZOOM</li>
+                </ul>
+
+                <h3> Trouble In Paradise? </h3>
+                <ul>
+                    <li> can't quite get it right? </li>
+                    <li> Fun Fact: New mechanic means new skill </li>
+                    <li> Press jump before you dash and your won't perform the wavedash </li>
+                    <li> do it too late and you won't achieve the desired amount of distance </li>
+                    <li> by timing your jump correctly you can maximise the distance that you boost from the wavedash</li>
+                    <li> easy! </li>
+                </ul>
+
+                <h3> Have Fun wavedashing! </h3>
+            </div>
+        </div>
+    </body>
+</html>
