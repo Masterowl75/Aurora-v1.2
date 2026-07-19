@@ -101,110 +101,7 @@ function preload() {
     // load.tilemapTiledJSON loads the file sourced as a tile map so that it can be used as one in the game
 }
 
-function create() {
-
-    this.nocliptoggle = false
-    this.input.keyboard.on('keydown', (event) => {
-
-        if (event.key.toLowerCase() === 'v' && event.ctrlKey) {
-            if (this.nocliptoggle == false) {
-                this.nocliptoggle = true
-                player.body.checkCollision.none = true;
-
-                this.playerMoveHack = this.time.addEvent({
-                    delay: 16,
-                    loop: true,
-                    callback: () => {
-                        player.body.allowGravity = false;
-
-                        // Left / Right
-                        if (this.keyA.isDown) {
-                            player.setVelocityX(-1000);
-                        } else if (this.keyD.isDown) {
-                            player.setVelocityX(1000);
-                        } else {
-                            player.setVelocityX(0);
-                        }
-
-                        if (this.keyW.isDown) {
-                            player.setVelocityY(-1000);
-                        } else if (this.keyS.isDown) {
-                            player.setVelocityY(1000);
-                        } else {
-                            player.setVelocityY(0);
-                        }
-                    }
-                });
-            } else {
-                this.nocliptoggle = false
-                this.playerMoveHack.remove()
-                player.body.allowGravity = true;
-                player.body.checkCollision.none = false;
-            }
-
-        };
-
-        if (event.key.toLowerCase() === 'c' && event.ctrlKey) {
-            player.body.checkCollision.none = false
-        }
-    })
-    if (!gameStarted) {
-
-        this.add.image(0, 0, 'aurora-mountain').setScale(0.68).setOrigin(0, 0).setScrollFactor(0);
-
-        const title = this.add.text(500, 47, 'AURORA', {
-            font: "bold 54px Silkscreen",
-            fontWeight: '600',
-            color: '#ffffff'
-        }).setOrigin(0.5).setDepth(9999);
-
-        this.tweens.add({
-            targets: title,
-            scale: 1.08,
-            duration: 1000,
-            yoyo: true,
-            repeat: -1,
-            ease: 'Sine.easeInOut'
-        });
-
-        const startButton = this.add.text(500, 320, 'START', {
-                fontFamily: 'Silkscreen',
-                fontSize: '32px',
-                color: '#ffffff',
-                backgroundColor: '#302f30',
-                padding: {
-                    x: 20,
-                    y: 10
-                }
-            })
-            .setOrigin(0.5)
-            .setDepth(9999)
-            .setInteractive({
-                useHandCursor: true
-            });
-
-        startButton.on('pointerover', () => {
-            startButton.setScale(1.05);
-        });
-
-        startButton.on('pointerout', () => {
-            startButton.setScale(1);
-        });
-
-        startButton.on('pointerdown', () => {
-
-            this.cameras.main.fadeOut(500, 0, 0, 0);
-
-            this.cameras.main.once(
-                Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
-                () => {
-                    gameStarted = true;
-                    this.scene.restart();
-                }
-            );
-
-        });
-    }
+function create() {							            
 
     // localStorage.setItem('admin', 'yessir'); 
     map = this.make.tilemap({
@@ -552,20 +449,9 @@ function create() {
 }
 
 function update(time, delta) {
-    if (!gameStarted || !player || !player.body) {
-        return;
-    }
-    if (
-        !this.keyW ||
-        !this.keyA ||
-        !this.keyS ||
-        !this.keyD ||
-        !this.keyENTER ||
-        !this.keySHIFT ||
-        !this.keyE
-    ) {
-        return;
-    }
+    if (!gameStarted){
+		return
+	}
 
     if (!gameStarted) {
         return;
