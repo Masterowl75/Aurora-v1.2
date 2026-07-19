@@ -852,20 +852,6 @@ function update(time, delta) {
     }
 
 
-    if (Phaser.Input.Keyboard.JustDown(this.keyESC)) {
-
-        player = null;
-
-        gameStarted = false;
-        gameFinished = false;
-
-        score = 0;
-        deaths = 0;
-
-        this.scene.restart();
-    }
-
-
 }
 
 
