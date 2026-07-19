@@ -513,6 +513,17 @@ function update(time, delta) {
     if (!gameStarted){
 		return
 	}
+	if (
+        !this.keyW ||
+        !this.keyA ||
+        !this.keyS ||
+        !this.keyD ||
+        !this.keyENTER ||
+        !this.keySHIFT ||
+        !this.keyE
+    ) {
+        return;
+    }
 
     if (!gameStarted) {
         return;
