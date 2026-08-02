@@ -7,22 +7,6 @@ let keybindRight = Number(localStorage.getItem("keybindRight")) || Phaser.Input.
 let keybindDash = Number(localStorage.getItem("keybindDash")) || Phaser.Input.Keyboard.KeyCodes.ENTER;
 
 
-webucate.db.init('qfTF6SzEFB0pvOIq9bRI')
-    .then(async () => {
-
-        dbReady = true;
-
-        await webucate.db.run(`
-		CREATE TABLE IF NOT EXISTS leaderboard (
-			id INTEGER PRIMARY KEY AUTOINCREMENT,
-			player_name TEXT,
-			category TEXT,
-			time_seconds INTEGER,
-			berries INTEGER,
-		)
-	`);
-    });
-
 const config = {
     type: Phaser.AUTO,
     width: 1000,
@@ -222,51 +206,6 @@ function create() {
 
     console.log("gameStarted =", gameStarted);
 
-    this.nocliptoggle = false
-    this.input.keyboard.on('keydown', (event) => {
-
-        if (event.key.toLowerCase() === 'v' && event.ctrlKey) {
-            if (this.nocliptoggle == false) {
-                this.nocliptoggle = true
-                player.body.checkCollision.none = true;
-
-                this.playerMoveHack = this.time.addEvent({
-                    delay: 16,
-                    loop: true,
-                    callback: () => {
-                        player.body.allowGravity = false;
-
-                        // Left / Right
-                        if (this.keyA.isDown) {
-                            player.setVelocityX(-1000);
-                        } else if (this.keyD.isDown) {
-                            player.setVelocityX(1000);
-                        } else {
-                            player.setVelocityX(0);
-                        }
-
-                        if (this.keyW.isDown) {
-                            player.setVelocityY(-1000);
-                        } else if (this.keyS.isDown) {
-                            player.setVelocityY(1000);
-                        } else {
-                            player.setVelocityY(0);
-                        }
-                    }
-                });
-            } else {
-                this.nocliptoggle = false
-                this.playerMoveHack.remove()
-                player.body.allowGravity = true;
-                player.body.checkCollision.none = false;
-            }
-
-        };
-
-        if (event.key.toLowerCase() === 'c' && event.ctrlKey) {
-            player.body.checkCollision.none = false
-        }
-    })
     if (!gameStarted) {
 
         this.add.image(0, 0, 'aurora-mountain').setScale(0.68).setOrigin(0, 0).setScrollFactor(0);
@@ -328,34 +267,8 @@ function create() {
 
         });
 
-        const leaderboardButton = this.add.text(500, 400, 'LEADERBOARD', {
-                fontFamily: 'Silkscreen',
-                fontSize: '32px',
-                color: '#ffffff',
-                backgroundColor: '#302f30',
-                padding: {
-                    x: 10,
-                    y: 7
-                }
-            })
-            .setOrigin(0.5)
-            .setDepth(9999)
-            .setInteractive({
-                useHandCursor: true
-            });
-
-        leaderboardButton.on('pointerover', () => {
-            leaderboardButton.setScale(1.05);
-        });
-
-        leaderboardButton.on('pointerout', () => {
-            leaderboardButton.setScale(1);
-        });
-
-        leaderboardButton.on('pointerdown', () => {
-            openMenuLeaderboard();
-        });
-        const tutorialButton = this.add.text(500, 480, 'Tutorial', {
+        
+        const tutorialButton = this.add.text(500, 430, 'Tutorial', {
                 fontFamily: 'Silkscreen',
                 fontSize: '32px',
                 color: '#ffffff',
@@ -956,35 +869,7 @@ or ESC to return to the menu.
             this.summaryText.setVisible(true);
             this.timerText.setVisible(false);
 
-            let playButton
-
-            if (!tutorial) {
-                playButton = this.add.text(500, 250, 'Submit Run', {
-                    fontFamily: 'Silkscreen',
-                    fill: '#afaeaf',
-                    fontSize: '15px',
-                }).setOrigin(0.5).setScrollFactor(0).setDepth(9999).setInteractive({
-                    useHandCursor: true,
-                });
-            }
-
-
-
-            playButton.on('pointerover', () => {
-                playButton.setStyle({
-                    fill: '#ffffff'
-                });
-                playButton.setFontSize('17px');
-            });
-
-            playButton.on('pointerout', () => {
-                playButton.setStyle({
-                    fill: '#afaeaf'
-                });
-                playButton.setFontSize('15px');
-            });
-
-            playButton.on('pointerdown', () => {
+            
 
                 const box = document.createElement("div");
 
@@ -997,6 +882,7 @@ or ESC to return to the menu.
                 box.style.padding = "20px";
                 box.style.border = "2px solid white";
                 box.style.zIndex = "99999";
+				box.setVisible = "false"
 
                 box.innerHTML = `
     <div style="display:flex;justify-content:space-between;align-items:center;">
@@ -1019,7 +905,6 @@ or ESC to return to the menu.
 
             <br><br>
 
-            <button id="submitBtn">Submit</button>
         `;
 
 
