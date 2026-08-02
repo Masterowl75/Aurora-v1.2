@@ -984,7 +984,6 @@ or ESC to return to the menu.
                         }
                     };
                 });
-            })
         }
     }, null, this);
 
